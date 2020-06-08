@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript Practice</title>
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            cursor: pointer;
+            transition: 0.8s;
+            margin: 0 8px 8px 0;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        .win {
+            background: pink;
+            border-radius: 50%;
+            transform: rotate(360deg);
+            text-align: center;
+        }
+
+        .lose {
+            transform: scale(0.9);
+        }
+
+        .btn {
+            width: 120px;
+            height: 100px;
+            background-color: greenyellow;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        h1 {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>宝探しゲーム！</h1>
+
+    <script>
+        'use strict'
+
+        const num = 5;
+        const winner = Math.floor(Math.random() * num);
+
+        for (let i = 0; i < num; i++) {
+            const div = document.createElement('div');
+            div.classList.add('box');
+
+            div.addEventListener('click', () => {
+                if (i === winner) {
+                    div.textContent = 'お宝!';
+                    div.classList.add('win');
+                } else {
+                    div.textContent = '残念!'
+                    div.classList.add('lose')
+                }
+            });
+
+            document.body.appendChild(div);
+        }
+
+        const button = document.createElement('div');
+        button.classList.add('btn');
+        button.textContent = 'もう一回！';
+
+        button.addEventListener('click', () => {
+            window.location.reload();
+        });
+
+        document.body.appendChild(button)
+    </script>
+</body>
+
+</html>
